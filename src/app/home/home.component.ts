@@ -9,8 +9,10 @@ import { UserService } from '../_services/user.service';
 export class HomeComponent implements OnInit {
   content?: string;
 
+  isLoggedIn = true;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+
   }
 }
