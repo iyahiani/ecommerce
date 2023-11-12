@@ -57,7 +57,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "port": 4001
+            "proxyConfig": "proxy-config.json"
           },
           "configurations": {
             "production": {
@@ -68,6 +68,7 @@
               "browserTarget": "ecom:build:development"
             }
           },
+
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
