@@ -9,7 +9,7 @@ export class StorageService {
   constructor() {}
 
   clean(): void {
-    window.sessionStorage.removeItem('auth-user');
+    window.sessionStorage.removeItem(USER_KEY);
   }
 
   public saveUser(user: any): void {
