@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-14-jwt-auth'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-14-jwt-auth');
+    expect(app.appName).toEqual('ecom');
   });
 
   it('should render title', () => {

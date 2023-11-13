@@ -10,11 +10,14 @@ import { EventBusService } from './_shared/event-bus.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  appName: string ;
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
     private eventBusService: EventBusService
-  ) {}
+  ) {
+    this.appName ='ecom';
+  }
 
   ngOnInit(): void {
 
