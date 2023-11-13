@@ -13,7 +13,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 
-import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.interceptor';
+import { HeaderComponent } from './header/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     FormsModule,
     HttpClientModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

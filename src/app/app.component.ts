@@ -10,14 +10,6 @@ import { EventBusService } from './_shared/event-bus.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private roles: string[] = ['ROLE_ADMIN',''];
-  isLoggedIn = true;
-  showAdminBoard = true;
-  showModeratorBoard = true;
-  username?: string;
-
-  eventBusSub?: Subscription;
-
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
@@ -25,22 +17,6 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
 
-    if (this.isLoggedIn) {
-      this.roles= this.storageService.getUser().roles;
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = this.storageService.getUser().login;
-    }
-
-    this.eventBusSub = this.eventBusService.on('logout', () => {
-      this.logout();
-    });
-  }
-  logout(): void {
-    this.storageService.clean();
-    window.location.reload();
   }
 }
