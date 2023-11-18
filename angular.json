@@ -92,7 +92,12 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "styles.scss"
+              "styles.scss",
+              "./assets/testCss/globals.css",
+              "./assets/testCss/style.css",
+              "./assets/testCss/styleguide.css",
+               "node_modules/postcss-loader/dist/cjs.js"
+
             ],
             "scripts": []
           }

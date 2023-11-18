@@ -15,7 +15,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 
 import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.interceptor';
 import { HeaderComponent } from './header/header/header.component';
-
+import {MatButtonModule} from '@angular/material/button';
+import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,14 +28,39 @@ import { HeaderComponent } from './header/header/header.component';
     BoardModeratorComponent,
     BoardUserComponent,
     HeaderComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    SocialLoginModule
   ],
-  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor}],
+  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor},
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '389716753608-9ju211ha6l0g2fpunb7p4799mktldasj.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

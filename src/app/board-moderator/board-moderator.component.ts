@@ -12,7 +12,7 @@ export class BoardModeratorComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getModeratorBoard().subscribe({
+   /* this.userService.getModeratorBoard().subscribe({
       next: data => {
         this.content = data;
       },
@@ -28,6 +28,6 @@ export class BoardModeratorComponent implements OnInit {
           this.content = `Error with status: ${err.status}`;
         }
       }
-    });
+    });*/
   }
 }

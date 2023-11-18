@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import {Router} from "@angular/router";
+import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router,  private socialAuthService: SocialAuthService) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -47,5 +49,14 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+  loginWithGoogle(){
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(() => this.router.navigate(['home']),error =>{
+        console.log(error);
+      });
+  }
+  refreshToken(): void {
+    this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 }

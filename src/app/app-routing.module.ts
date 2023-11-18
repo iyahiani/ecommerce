@@ -11,6 +11,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {HomeGuardGuard} from "./_helpers/home-guard.guard";
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [HomeGuardGuard] },
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+
   { path: '**', pathMatch: 'full', component: LoginComponent }
 ];
 
