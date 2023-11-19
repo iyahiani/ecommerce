@@ -16,7 +16,9 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.interceptor';
 import { HeaderComponent } from './header/header/header.component';
 import {MatButtonModule} from '@angular/material/button';
-import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonDirective
+   } from '@abacritt/angularx-social-login';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,7 @@ import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, So
     FormsModule,
     HttpClientModule,
     MatButtonModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
   providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor},
     {
@@ -63,4 +65,5 @@ import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, So
     ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

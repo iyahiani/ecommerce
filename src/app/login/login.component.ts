@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import {Router} from "@angular/router";
@@ -11,6 +11,8 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('googleBtnRef')
+  googleBtn?: ElementRef;
   form: any = {
     email: null,
     password: null
@@ -52,7 +54,10 @@ export class LoginComponent implements OnInit {
   }
   loginWithGoogle(){
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then(() => this.router.navigate(['home']),error =>{
+      .then((resultat) =>
+      {
+        console.log(resultat);
+        this.router.navigate(['home'])},error =>{
         console.log(error);
       });
   }
