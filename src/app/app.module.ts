@@ -15,6 +15,9 @@ import { BoardUserComponent } from './board-user/board-user.component';
 
 import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.interceptor';
 import { HeaderComponent } from './header/header/header.component';
+import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider} from "angularx-social-login";
+import {GoogleAuthentComponent} from "./login/google-authent/google-authent.component";
+import {MatLegacyButtonModule} from "@angular/material/legacy-button";
 
 @NgModule({
   declarations: [
@@ -26,15 +29,30 @@ import { HeaderComponent } from './header/header/header.component';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    HeaderComponent
+    HeaderComponent,
+    GoogleAuthentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule,
+    MatLegacyButtonModule
   ],
-  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor}],
+  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor},
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true, //keeps the user signed in
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('389716753608-9ju211ha6l0g2fpunb7p4799mktldasj.apps.googleusercontent.com"') // your client id
+          }
+        ]
+      }
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

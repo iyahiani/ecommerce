@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {Router} from "@angular/router";
 @Component({
@@ -12,10 +12,9 @@ export class GoogleAuthentComponent {
   }
   loginWithGoogle(){
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((resultat) =>
+      .then( () =>
       {
-        console.log(resultat);
-        this.router.navigate(['home'])},error =>{
+        this.router.navigate(['home'])},(error: any) =>{
         console.log(error);
       });
   }
