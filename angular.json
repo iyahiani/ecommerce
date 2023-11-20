@@ -68,7 +68,6 @@
               "browserTarget": "ecom:build:development"
             }
           },
-
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -96,16 +95,27 @@
               "./assets/testCss/globals.css",
               "./assets/testCss/style.css",
               "./assets/testCss/styleguide.css",
-               "node_modules/postcss-loader/dist/cjs.js"
-
+              "node_modules/postcss-loader/dist/cjs.js"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "c25e446f-4e50-47e8-a4d0-aa10f5193695"
+    "analytics": "c25e446f-4e50-47e8-a4d0-aa10f5193695",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

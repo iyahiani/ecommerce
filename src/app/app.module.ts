@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,11 +15,6 @@ import { BoardUserComponent } from './board-user/board-user.component';
 
 import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.interceptor';
 import { HeaderComponent } from './header/header/header.component';
-import {MatButtonModule} from '@angular/material/button';
-import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonDirective,GoogleSigninButtonModule
-   } from '@abacritt/angularx-social-login';
-import { GoogleAuthentComponent } from './login/google-authent/google-authent.component';
-import { FacbookAuthentComponent } from './login/facbook-authent/facbook-authent.component';
 
 @NgModule({
   declarations: [
@@ -31,45 +26,15 @@ import { FacbookAuthentComponent } from './login/facbook-authent/facbook-authent
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    HeaderComponent,
-    GoogleAuthentComponent,
-    FacbookAuthentComponent
-
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    SocialLoginModule,
-    GoogleSigninButtonModule
+    HttpClientModule
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor},
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '389716753608-9ju211ha6l0g2fpunb7p4799mktldasj.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId')
-          }
-        ],
-        onError: (err) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig,
-    }
-    ],
+  providers: [{provide: httpInterceptorProviders, useClass: HttpRequestInterceptor}],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
