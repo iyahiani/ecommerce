@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
+import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {Router} from "@angular/router";
 @Component({
