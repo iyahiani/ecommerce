@@ -50,7 +50,7 @@ import {GoogleAuthentComponent} from "./login/google-authent/google-authent.comp
             {
               id: GoogleLoginProvider.PROVIDER_ID,
               provider: new GoogleLoginProvider(
-                '389716753608-9ju211ha6l0g2fpunb7p4799mktldasj.apps.googleusercontent.com'
+                '338669335569-a7ccu9o6d0s697ieekudq6a49h33ehe9.apps.googleusercontent.com'
               )
             },
             {

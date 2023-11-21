@@ -21,4 +21,6 @@ export class GoogleAuthentComponent {
   refreshToken(): void {
     this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
+
+
 }
