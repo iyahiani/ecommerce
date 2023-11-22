@@ -1,26 +1,47 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {Router} from "@angular/router";
+import {googleSignInResponse, googleCredentials} from './Igoogle'
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 @Component({
   selector: 'app-google-authent',
   templateUrl: './google-authent.component.html',
   styleUrls: ['./google-authent.component.scss']
 })
 export class GoogleAuthentComponent {
-  constructor( private socialAuthService: SocialAuthService, private router: Router) {
+  @Output() loginWithGoogle: EventEmitter<any> = new EventEmitter<any>();
+  constructor( ) {
   }
-  loginWithGoogle(){
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then( () =>
-      {
-        this.router.navigate(['home'])},(error: any) =>{
-        console.log(error);
-      });
-  }
-  refreshToken(): void {
-    this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
-  }
+  createFakeGoogleWrapper = () => {
+    const googleLoginWrapper = document.createElement('div');
+    googleLoginWrapper.style.display = 'none';
+    googleLoginWrapper.classList.add('google-login-btn');
+    document.body.appendChild(googleLoginWrapper);
+    window.google.accounts.id.renderButton(googleLoginWrapper, {
+      type: 'icon',
+      width: '200',
+      size: 'large',
+      theme:"outline",
+      shape: "rectangular"
+    });
 
+    const googleLoginWrapperButton = googleLoginWrapper.querySelector(
+      'div[role=button]'
+    ) as HTMLElement;
 
+    return {
+      click: () => {
+        googleLoginWrapperButton?.click();
+      },
+    };
+  };
+
+  handleGoogleLogin() {
+    this.loginWithGoogle.emit(this.createFakeGoogleWrapper());
+  }
 }
