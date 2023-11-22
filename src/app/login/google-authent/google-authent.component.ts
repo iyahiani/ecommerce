@@ -19,15 +19,9 @@ export class GoogleAuthentComponent {
   }
   createFakeGoogleWrapper = () => {
     const googleLoginWrapper = document.createElement('div');
-    googleLoginWrapper.style.display = 'none';
-    googleLoginWrapper.classList.add('google-login-btn');
     document.body.appendChild(googleLoginWrapper);
     window.google.accounts.id.renderButton(googleLoginWrapper, {
-      type: 'icon',
-      width: '200',
-      size: 'large',
-      theme:"outline",
-      shape: "rectangular"
+      type: 'icon'
     });
 
     const googleLoginWrapperButton = googleLoginWrapper.querySelector(
