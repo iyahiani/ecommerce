@@ -36,5 +36,6 @@ label {
 }
 .login-color{
    color: black;
-   background-color: aliceblue;
+   background-color: transparent;
+  border-color: #1a1e21;
  }
