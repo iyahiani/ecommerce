@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import {Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {StorageService} from "../_services/storage.service";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent  {
   form: any = {
     username: null,
     email: null,
@@ -17,10 +20,8 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router, private socialAuthService: SocialAuthService) { }
+  authSubscription!: Subscription;
 
   onSubmit(): void {
     const { username, email, password } = this.form;
@@ -36,6 +37,17 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
+    });
+  }
+  googleSignin(googleWrapper: any) {
+    googleWrapper.click();
+    this.authSubscription = this.socialAuthService.authState.subscribe((user) => {
+      console.log('user', user);
+      if (user){
+        this.storageService.saveUser(user);
+        this.router.navigate(['home']);
+      }
+
     });
   }
 }

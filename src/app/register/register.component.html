@@ -84,7 +84,10 @@
         Signup failed!<br />{{ errorMessage }}
       </div>
     </form>
-
+    <div class="or-container"><div class="line-separator"></div> <div class="or-label">or</div><div class="line-separator"></div></div>
+    <app-google-authent (loginWithGoogle)="googleSignin($event)"></app-google-authent>
+    <div class="or-container"><div class="line-separator"></div> <div class="or-label">or</div><div class="line-separator"></div></div>
+    <app-facbook-authent></app-facbook-authent>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
