@@ -39,3 +39,20 @@ label {
    background-color: transparent;
   border-color: #1a1e21;
  }
+.or-container {
+  align-items: center;
+  color: #ccc;
+  display: flex;
+  margin: 2% 0;
+}
+.line-separator {
+  background-color: #ccc;
+  flex-grow: 5;
+  height: 1px;
+  margin: 15px 0 1%;
+}
+.or-label {
+  flex-grow: 1;
+  text-align: center;
+  margin: 2px 0 2px;
+}
