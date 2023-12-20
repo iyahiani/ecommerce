@@ -56,10 +56,11 @@
       </div>
     </form>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">
+      <button class="btn btn-primary btn-block login-color">
         Login
       </button>
       <app-google-authent (loginWithGoogle)="googleSignin($event)"></app-google-authent>
+      <app-facbook-authent></app-facbook-authent>
     </div>
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ roles }}.

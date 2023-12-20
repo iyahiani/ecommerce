@@ -17,6 +17,7 @@ import {httpInterceptorProviders, HttpRequestInterceptor} from './_helpers/http.
 import { HeaderComponent } from './header/header/header.component';
 import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider,GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
 import {GoogleAuthentComponent} from "./login/google-authent/google-authent.component";
+import {FacebookAuthentComponent} from "./login/facbook-authent/facbook-authent.component";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {GoogleAuthentComponent} from "./login/google-authent/google-authent.comp
     BoardModeratorComponent,
     BoardUserComponent,
     HeaderComponent,
-    GoogleAuthentComponent
+    GoogleAuthentComponent,
+    FacebookAuthentComponent
 
   ],
   imports: [

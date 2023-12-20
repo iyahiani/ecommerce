@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   show_private_details: true,
   show_live_link: true,
-  api: 'http://localhost:4000/api'
+  api: 'http://localhost:4000/api',
+  apiUrl: 'http://localhost:4000/api',
+  facbookID: '309982078525077',
 };
 
 /*

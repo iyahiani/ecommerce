@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FacbookAuthentComponent } from './facbook-authent.component';
+import { FacebookAuthentComponent } from './facbook-authent.component';
 
 describe('FacbookAuthentComponent', () => {
-  let component: FacbookAuthentComponent;
-  let fixture: ComponentFixture<FacbookAuthentComponent>;
+  let component: FacebookAuthentComponent;
+  let fixture: ComponentFixture<FacebookAuthentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FacbookAuthentComponent ]
+      declarations: [ FacebookAuthentComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FacbookAuthentComponent);
+    fixture = TestBed.createComponent(FacebookAuthentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
